@@ -9,6 +9,7 @@ const archive = require('./zip_lib.js');
 
 const commander = require('commander');
 const { exit } = require('process');
+const {DropSettings} = require("./gen_qr_lib");
 const program = new commander.Command();
 
 //https://basescan.org/address/0x475757f2FbFD3e344d6E63A6Fe7C8971028b091a
@@ -102,8 +103,7 @@ async function execute () {
     }
 
     if (flagWipe || flagZip) {
-        const settings = qrdrop.createNewDropSettings();
-        archive.cleanDirs([settings.pathTestQr, settings.pathQr]);
+        archive.cleanDirs([DropSettings.pathTestQr, DropSettings.pathQr]);
     }
 }
 
